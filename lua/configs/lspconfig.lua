@@ -3,8 +3,6 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
-lspconfig.emmet_language_server.setup {}
-
 -- EXAMPLE
 local servers = { "html", "cssls", "ts_ls", "jsonls", "pyright" }
 local nvlsp = require "nvchad.configs.lspconfig"
@@ -17,6 +15,8 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+lspconfig.emmet_language_server.setup {}
 
 -- configuring single server, example: typescript
 -- lspconfig.ts_ls.setup {

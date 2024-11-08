@@ -33,6 +33,27 @@ return {
     version = "*",
     config = true,
   },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {},
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+  },
+  {
+    "rmagatti/goto-preview",
+    event = "BufEnter",
+    config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
