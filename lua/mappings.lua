@@ -1,25 +1,26 @@
 require "nvchad.mappings"
 
 -- add yours here
-
 local map = vim.keymap.set
 map({ "n", "t" }, "<leader>tt", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
 
+-- Nvim api shortcuts
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
-map("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true })
+map("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true, desc = "Display doc in a popup" })
 map("n", "<leader>r", vim.lsp.buf.rename, bufopts)
-map("n", "U", "<C-r>", { noremap = true, silent = true })
-map("n", "<leader>v", ":vs<CR>", { noremap = true, silent = true })
-map("n", "<leader>h", ":sp<CR>", { noremap = true, silent = true })
-map("n", "<leader>c", ":close<CR>", { noremap = true, silent = true })
--- map('n', '<leader>', ':bd<CR>', { noremap = true, silent = true })
-map("n", "1", "^", { noremap = true, silent = true })
-map("n", "2", "$", { noremap = true, silent = true })
-map("v", "1", "^", { noremap = true, silent = true })
-map("v", "2", "$", { noremap = true, silent = true })
+map("n", "U", "<C-r>", { noremap = true, silent = true, desc = "Redo" })
+map("n", "<leader>v", ":vs<CR>", { noremap = true, silent = true, desc = "Open a vertical split" })
+map("n", "<leader>h", ":sp<CR>", { noremap = true, silent = true, desc = "Open a horizontal split" })
+map("n", "<leader>c", ":close<CR>", { noremap = true, silent = true, desc = "Close focused window" })
+map("n", "<leader><BS>", ":bd<CR>", { noremap = true, silent = true, desc = "Close current buffer" })
+map("n", "<C-q>", ":q<CR>", { noremap = true, silent = true, desc = "Close current buffer" })
+map("n", "1", "^", { noremap = true, silent = true, desc = "Go to start or the line in normal mode" })
+map("n", "2", "$", { noremap = true, silent = true, desc = "Go to end or the line in normal mode" })
+map("v", "1", "^", { noremap = true, silent = true, desc = "Go to start or the line in visual mode" })
+map("v", "2", "$", { noremap = true, silent = true, desc = "Go to start or the line in visual mode" })
 
 -- Hop mappings
 local hop = require "hop"
@@ -30,12 +31,14 @@ map("", "f", function()
   hop.hint_words()
 end, { remap = true })
 
-map("n", "<space>fd", ":Telescope file_browser<CR>")
+-- Telescope
+map("n", "<space>fd", ":Telescope file_browser<CR>", { noremap = true, silent = true, desc = "Open Telescope File Browser" })
+map("n", "<space>fn", ":Telescope notify<CR>", { noremap = true, silent = true, desc = "Open Notify in telescope" })
 
-map("n", "<leader>gd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
-map("n", "<leader>gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
-map("n", "<leader>gl", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", { noremap = true })
-map("n", "<leader>gi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", { noremap = true })
+-- map("n", "<leader>gd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
+-- map("n", "<leader>gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
+-- map("n", "<leader>gl", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", { noremap = true })
+-- map("n", "<leader>gi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", { noremap = true })
 
 -- map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
 -- map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
