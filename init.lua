@@ -25,8 +25,9 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
-require('mini.surround').setup()
-vim.notify = require("notify")
+require("mini.surround").setup()
+-- vim.notify = require "notify"
+require("supermaven-nvim").setup {}
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
@@ -38,4 +39,3 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-

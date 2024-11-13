@@ -15,6 +15,9 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
+    dependencies = {
+      "folke/todo-comments.nvim",
+    },
     config = function()
       dofile(vim.g.base46_cache .. "telescope")
       require("telescope").setup {
@@ -48,6 +51,7 @@ return {
   {
     "echasnovski/mini.surround",
     version = "*",
+    j,
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
@@ -66,8 +70,20 @@ return {
       "MunifTanjim/nui.nvim",
     },
   },
+  -- {
+  --   "rcarriga/nvim-notify",
+  -- },
+  -- {
+  --   "j-hui/fidget.nvim",
+  --   opts = {
+  --     -- options
+  --   },
+  -- },
   {
-    "rcarriga/nvim-notify",
+    "folke/todo-comments.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
   },
   {
     "rmagatti/auto-session",
@@ -80,6 +96,9 @@ return {
       suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
       -- log_level = 'debug',
     },
+  },
+  {
+    "supermaven-inc/supermaven-nvim",
   },
   -- {
   --   "nvim-neo-tree/neo-tree.nvim",

@@ -21,6 +21,7 @@ map("n", "1", "^", { noremap = true, silent = true, desc = "Go to start or the l
 map("n", "2", "$", { noremap = true, silent = true, desc = "Go to end or the line in normal mode" })
 map("v", "1", "^", { noremap = true, silent = true, desc = "Go to start or the line in visual mode" })
 map("v", "2", "$", { noremap = true, silent = true, desc = "Go to start or the line in visual mode" })
+-- map('i', '<C><Tab>', '<C-e>', { noremap = true, silent = true, desc = "Close the completion popup" })
 
 -- Hop mappings
 local hop = require "hop"
@@ -29,11 +30,12 @@ hop.setup {
 }
 map("", "f", function()
   hop.hint_words()
-end, { remap = true })
+end, { remap = true, desc = "Hop word" })
 
--- Telescope
+-- Telescope mappings
 map("n", "<space>fd", ":Telescope file_browser<CR>", { noremap = true, silent = true, desc = "Open Telescope File Browser" })
 map("n", "<space>fn", ":Telescope notify<CR>", { noremap = true, silent = true, desc = "Open Notify in telescope" })
+map("n", "<space>ft", ":TodoTelescope<CR>", { noremap = true, silent = true, desc = "Open Todo-Comments in telescope" })
 
 -- map("n", "<leader>gd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
 -- map("n", "<leader>gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
