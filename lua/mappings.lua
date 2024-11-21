@@ -1,14 +1,31 @@
 require "nvchad.mappings"
 
--- add yours here
 local map = vim.keymap.set
-map({ "n", "t" }, "<leader>tt", function()
-  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+
+-- add yours here
+map({ "n", "t" }, "<leader>tf", function()
+  require("nvchad.term").toggle {
+    pos = "float",
+    id = "floatTerm",
+    float_opts = {
+      relative = "editor",
+      row = 0.15,
+      col = 0.15,
+      width = 0.7,
+      height = 0.6,
+      border = "single",
+    },
+  }
 end, { desc = "terminal toggle floating term" })
+
+map({ "n", "t" }, "<leader>tv", function()
+  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm", size = 0.5 }
+end, { desc = "terminal toggleable vertical term" })
 
 -- Nvim api shortcuts
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
+map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Enter normal mode in terminal" })
 map("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true, desc = "Display doc in a popup" })
 map("n", "<leader>r", vim.lsp.buf.rename, bufopts)
 map("n", "U", "<C-r>", { noremap = true, silent = true, desc = "Redo" })
@@ -33,7 +50,12 @@ map("", "f", function()
 end, { remap = true, desc = "Hop word" })
 
 -- Telescope mappings
-map("n", "<space>fd", ":Telescope file_browser<CR>", { noremap = true, silent = true, desc = "Open Telescope File Browser" })
+map(
+  "n",
+  "<space>fd",
+  ":Telescope file_browser<CR>",
+  { noremap = true, silent = true, desc = "Open Telescope File Browser" }
+)
 map("n", "<space>fn", ":Telescope notify<CR>", { noremap = true, silent = true, desc = "Open Notify in telescope" })
 map("n", "<space>ft", ":TodoTelescope<CR>", { noremap = true, silent = true, desc = "Open Todo-Comments in telescope" })
 
