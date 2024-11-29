@@ -16,10 +16,14 @@ map({ "n", "t" }, "<leader>tf", function()
       border = "single",
     },
   }
-end, { desc = "terminal toggle floating term" })
+end, { desc = "terminal toggleable floating term" })
 
 map({ "n", "t" }, "<leader>tv", function()
-  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm", size = 0.5 }
+  require("nvchad.term").toggle {
+    pos = "vsp",
+    id = "vtoggleTerm",
+    size = 0.5,
+  }
 end, { desc = "terminal toggleable vertical term" })
 
 -- Nvim api shortcuts
@@ -58,6 +62,12 @@ map(
 )
 map("n", "<space>fn", ":Telescope notify<CR>", { noremap = true, silent = true, desc = "Open Notify in telescope" })
 map("n", "<space>ft", ":TodoTelescope<CR>", { noremap = true, silent = true, desc = "Open Todo-Comments in telescope" })
+map(
+  "n",
+  "<space>tt",
+  ":Telescope terms<CR>",
+  { noremap = true, silent = true, desc = "Show terminal instances in Telescope" }
+)
 
 -- map("n", "<leader>gd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
 -- map("n", "<leader>gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
